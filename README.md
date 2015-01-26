@@ -7,9 +7,9 @@ Start by dropping the files into your project. You might choose a directory call
 
 We highly recommend you use Composer to load dependencies. You may choose to load the dependencies some other way, but those methods will not be covered here.
 
-The official documentation for installing Composer can be found [here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), but below is a TL;DR version for those on Linux/Unix/OSX. (Sorry Windows, no shortcuts here)
+The official documentation for installing Composer can be found [here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), but below is a TL;DR version for those on Linux/Unix/OSX. (Sorry Windows, no shortcuts here.)
 
-Assuming you have cRUL and PHP installed, run the following from inside your `/ncstate-social-sdk` directory.
+Assuming you have cURL and PHP installed, run the following from inside your `/ncstate-social-sdk` directory.
 
 ```
 // Installs Composer into ncstate-social-sdk/bin directory
