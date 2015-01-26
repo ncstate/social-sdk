@@ -4,6 +4,17 @@ use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookRequestException;
 
+
+/**
+ * Retrieves Facebook posts for a given username.
+ * 
+ * @param string $username A facebook username
+ * @param bool $raw Whether to return the full raw response data instead of only
+ *    parsed time, date, and url. Defaults to false.
+ * @param int $num How many posts to return. Defaults to 10.
+ * @return array If $raw is TRUE, returns an array of graph objects. If $raw is
+ *    FALSE, returns an array of posts with keys time, message, and url.
+ */
 function getFacebook($username, $raw = false, $num = 10) {
 	$app_id = FACEBOOK_APP_ID;
 	$secret = FACEBOOK_SECRET;

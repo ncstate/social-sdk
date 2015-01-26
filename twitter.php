@@ -2,6 +2,13 @@
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+/**
+ * Retrieves tweets for a given username.
+ * 
+ * @param string $username A Twitter handle without @
+ * @param int $num How many posts to return. Defaults to 10.
+ * @return array Returns an array of posts with keys time, description, url, and media.
+ */
 function getTwitter($twitter_handle, $num = 10) {
 	$twitterUser = $twitter_handle;
 	
