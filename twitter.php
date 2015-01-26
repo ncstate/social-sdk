@@ -16,7 +16,6 @@ function getTwitter($twitter_handle, $num = 10) {
 		$tweet = array(
 			'time' => strtotime($status->created_at),
 			'description' => restoreUrlsWithinText($status),
-			'type' => 'twitter',
 			'url' => 'https://twitter.com/' . $status->user->screen_name . '/status/' . $status->id_str,
 			'media' => $status->entities->media
 		);
