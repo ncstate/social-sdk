@@ -17,8 +17,8 @@ function getInstagram($username, $num = 10) {
 	
 	foreach($media as $image) {
 		$photo = array(
-			'img' => $image->images->standard_resolution->url,
 			'time' => $image->created_time,
+			'img' => $image->images->standard_resolution->url,
 			'url' => $image->link,
 		);
 		$photos[] = $photo;
