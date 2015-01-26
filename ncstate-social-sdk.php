@@ -3,7 +3,8 @@
 require "vendor/autoload.php";
 require "config.php";
 
-include "facebook.php";
-include "twitter.php";
-include "instagram.php";
+
+if($load_apis['facebook']) include "facebook.php" ;
+if($load_apis['twitter'])include "twitter.php";
+if($load_apis['instagram'])include "instagram.php";
 
