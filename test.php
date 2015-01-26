@@ -5,21 +5,11 @@ require "ncstate-social-sdk.php";
 // Facebook example
 echo "<h2>Facebook</h2>";
 $fb = getFacebook('ncstate', false, 1);
+
 foreach($fb as $post) {
   echo "<strong>" . date('M d, y', $post['time']) . "</strong><br/>";
   echo $post['message'] . "<br/>";
   echo "<a href=" . $post['url'] . ">" . $post['url'] . "</a><br/><br/>";
-}
-
-
-// Instagram Example
-echo "<br/><br/><h2>Instagram</h2>";
-$instagram = getInstagram("ncstate", 4);
-
-foreach($instagram as $one_gram) {
-  if($one_gram['url'] != null){
-      echo '<a href="' . $one_gram['url'] . '"><img width="200" src="' . $one_gram['img'] . '" alt="' . $one_gram['img'] . '"></a>';
-  }
 }
 
 // Twitter Example
@@ -33,4 +23,14 @@ foreach($twitter as $tweet) {
   }
   $output .= "</p>";
   echo $output;
+}
+
+// Instagram Example
+echo "<br/><br/><h2>Instagram</h2>";
+$instagram = getInstagram("ncstate", 4);
+
+foreach($instagram as $one_gram) {
+  if($one_gram['url'] != null){
+      echo '<a href="' . $one_gram['url'] . '"><img width="200" src="' . $one_gram['img'] . '" alt="' . $one_gram['img'] . '"></a>';
+  }
 }
