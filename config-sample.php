@@ -1,5 +1,12 @@
 <?php
 
+/*** 
+    Ideally your server configuration will have the correct default timezone
+    setting. If not, uncomment the following line and set it appropriately.
+    http://php.net/manual/en/timezones.php
+*/
+// date_default_timezone_set('America/New_York');
+
 // Define which API's to load. To exclude an API, change value to false.
 $load_apis = array(
                 'facebook' => true,
