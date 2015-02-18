@@ -50,7 +50,7 @@ require 'PATH_TO_FILE/ncstate-social-sdk.php';
 
 ####Get Facebook Posts
 ```php
-getFacebook(string $username [, bool $raw = false, int $num = 15 ] );
+getFacebook(string $username [, int $num = 15, bool $raw = false ] );
 ```
 If `$raw` is TRUE, returns an array of graph objects to be further parsed with API functions. If `$raw` is FALSE, returns an array of posts in the following format.
 ```php

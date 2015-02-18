@@ -15,7 +15,7 @@ use Facebook\FacebookRequestException;
  * @return array If $raw is TRUE, returns an array of graph objects. If $raw is
  *    FALSE, returns an array of posts with keys time, message, and url.
  */
-function getFacebook($username, $raw = false, $num = 15) {
+function getFacebook($username, $num = 15, $raw = false) {
 	$app_id = FACEBOOK_APP_ID;
 	$secret = FACEBOOK_SECRET;
 	$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;

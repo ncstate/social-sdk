@@ -4,7 +4,7 @@ require "ncstate-social-sdk.php";
 
 // Facebook example
 echo "<h2>Facebook</h2>";
-$fb = getFacebook('ncstate', false, 1);
+$fb = getFacebook('ncstate', 1);
 
 foreach($fb as $post) {
   echo "<strong>" . date('M d, y', $post['time']) . "</strong><br/>";
