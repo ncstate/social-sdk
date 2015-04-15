@@ -25,19 +25,19 @@ function getFacebook($username, $num = 15, $raw = false) {
 	$session = new FacebookSession($authToken);
 
 	try {
-		$response = (new FacebookRequest($session, 'GET', '/'.$username.'/posts' ))->execute()->getGraphObject();
+		$response = (new FacebookRequest($session, 'GET', '/'.$username.'/posts' ))->execute();
 	} catch (FacebookRequestException $ex){
 		echo $ex->getMessage();
 	} catch (Exception $ex){
 		echo $ex->getMessage();
 	}
 
-	$data = $response->getPropertyAsArray('data');
-
 	if($raw) {
-		return $data;
+		return $response;
 	}
-	
+
+	$data = $response->getGraphObject()->getPropertyAsArray('data');
+
 	$posts = array();
 	$successful_posts = 0;
 
