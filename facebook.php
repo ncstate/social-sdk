@@ -16,21 +16,8 @@ use Facebook\FacebookRequestException;
  *    FALSE, returns an array of posts with keys time, message, and url.
  */
 function getFacebook($username, $num = 15, $raw = false) {
-	$app_id = FACEBOOK_APP_ID;
-	$secret = FACEBOOK_SECRET;
-	$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;
 	
-	FacebookSession::setDefaultApplication($app_id, $secret);
-
-	$session = new FacebookSession($authToken);
-
-	try {
-		$response = (new FacebookRequest($session, 'GET', '/'.$username.'/posts' ))->execute();
-	} catch (FacebookRequestException $ex){
-		echo $ex->getMessage();
-	} catch (Exception $ex){
-		echo $ex->getMessage();
-	}
+	$response = requestFacebook('/' . $username . '/posts');
 
 	if($raw) {
 		return $response;
@@ -56,4 +43,35 @@ function getFacebook($username, $num = 15, $raw = false) {
 	}
 
 	return $posts;
+}
+
+function requestFacebook($request) {
+	$session = getFbSession();
+	$response = '';
+
+	try {
+		$response = (new FacebookRequest($session, 'GET', $request ))->execute();
+	} catch (FacebookRequestException $ex){
+		echo $ex->getMessage();
+	} catch (Exception $ex){
+		echo $ex->getMessage();
+	}
+
+	return $response;
+}
+
+
+/**
+ * Creates a Facebook session.
+ * 
+ * @return new FacebookSession object
+ */
+function getFbSession() {
+	$app_id = FACEBOOK_APP_ID;
+	$secret = FACEBOOK_SECRET;
+	$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;
+	
+	FacebookSession::setDefaultApplication($app_id, $secret);
+
+	return new FacebookSession($authToken);
 }

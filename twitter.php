@@ -14,7 +14,7 @@ function getTwitter($twitter_handle, $num = 10) {
 	
 	date_default_timezone_set('America/New_York');
 
-  $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+  $connection = getTwitterConnection();
   $statuses = $connection->get('statuses/user_timeline', array('screen_name' => $twitterUser, 'count' => $num, 'include_entities' => true));
 
 	$tweets = array();  
@@ -29,6 +29,10 @@ function getTwitter($twitter_handle, $num = 10) {
 	    $tweets[] = $tweet;
    }
    return $tweets;
+}
+
+function getTwitterConnection() {
+  return new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
 }
 
 /**
