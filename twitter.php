@@ -11,8 +11,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
  */
 function getTwitter($twitter_handle, $num = 10) {
 	$twitterUser = $twitter_handle;
-	
-	date_default_timezone_set('America/New_York');
 
   $connection = getTwitterConnection();
   $statuses = $connection->get('statuses/user_timeline', array('screen_name' => $twitterUser, 'count' => $num, 'include_entities' => true));
