@@ -27,7 +27,7 @@ foreach($twitter as $tweet) {
 
 // Instagram Example
 echo "<br/><br/><h2>Instagram</h2>";
-$instagram = getInstagram("ncstate", 4);
+$instagram = getInstagram("ncstate", 10, 'thinkanddo');
 
 foreach($instagram as $one_gram) {
   if($one_gram['url'] != null){

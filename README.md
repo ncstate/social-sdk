@@ -86,9 +86,9 @@ For more on twitter media objects, see their [docs](https://dev.twitter.com/over
 
 ####Get Instagram
 ```php
-getInstagram(string $username [, int $num = 10 ] );
+getInstagram(string $username [, int $num = 10, string $tag = false ] );
 ```
-Returns an array of Instagram photos in the following format.
+Returns an array of Instagram photos in the following format. Adding a `$tag` parameter will filter the results accordingly.
 ```php
 Array (
     [0] => Array (
