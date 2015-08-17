@@ -70,8 +70,12 @@ function getFbSession() {
 	$app_id = FACEBOOK_APP_ID;
 	$secret = FACEBOOK_SECRET;
 	$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;
-	
-	FacebookSession::setDefaultApplication($app_id, $secret);
+
+	if (FACEBOOK_APP_ID && FACEBOOK_SECRET) {
+		FacebookSession::setDefaultApplication($app_id, $secret);
+	} else {
+		throw new \RuntimeException('Facebook API Credentials have not been defined.');
+	}
 
 	return new FacebookSession($authToken);
 }

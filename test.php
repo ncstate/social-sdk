@@ -4,7 +4,11 @@ require "ncstate-social-sdk.php";
 
 // Facebook example
 echo "<h2>Facebook</h2>";
-$fb = getFacebook('ncstate', 1);
+try {
+  $fb = getFacebook('ncstate', 1);
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
 
 foreach($fb as $post) {
   echo "<strong>" . date('M d, y', $post['time']) . "</strong><br/>";
@@ -14,7 +18,11 @@ foreach($fb as $post) {
 
 // Twitter Example
 echo "<br/><br/><br/><br/><h2>Twitter</h2>";
+try {
 $twitter = getTwitter("ncstate", 2);
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
 
 foreach($twitter as $tweet) {
   $output = "<p><strong>" . date('M d, y', $tweet['time']) . "</strong><br/>" . $tweet['description'];
@@ -27,7 +35,11 @@ foreach($twitter as $tweet) {
 
 // Instagram Example
 echo "<br/><br/><h2>Instagram</h2>";
+try {
 $instagram = getInstagram("ncstate", 10, 'thinkanddo');
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
 
 foreach($instagram as $one_gram) {
   if($one_gram['url'] != null){

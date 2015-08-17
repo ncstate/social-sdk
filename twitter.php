@@ -30,7 +30,11 @@ function getTwitter($twitter_handle, $num = 10) {
 }
 
 function getTwitterConnection() {
-  return new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+  if (CONSUMER_KEY && CONSUMER_SECRET && OAUTH_TOKEN && OAUTH_TOKEN_SECRET) {
+    return new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+  } else {
+    throw new \RuntimeException('Twitter API Credentials have not been defined.');
+  }
 }
 
 /**
