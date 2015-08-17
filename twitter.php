@@ -30,18 +30,7 @@ function getTwitter($twitter_handle, $num = 10) {
 }
 
 function getTwitterConnection() {
-	if(get_option('twitter_consumer_key')):
-		$consumer_key = get_option('twitter_consumer_key');
-		$consumer_secret = get_option('twitter_consumer_secret');
-		$oauth_token = get_option('oauth_token');
-		$oauth_token_secret = get_option('oauth_token_secret');
-	else:
-		$consumer_key = CONSUMER_KEY;
-		$consumer_secret = CONSUMER_SECRET;
-		$oauth_token = OAUTH_TOKEN;
-		$oauth_token_secret = OAUTH_TOKEN_SECRET;
-	endif;	
-	return new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
+  return new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
 }
 
 /**

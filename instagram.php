@@ -14,11 +14,7 @@ use MetzWeb\Instagram\Instagram;
 function getInstagram($username, $num = 10, $tag = false)
 {
 	
-	if(get_option('instagram_app_key')):
-		$instagram = new Instagram(get_option('instagram_app_key'));
-	else:
-		$instagram = new Instagram(INSTAGRAM_APP_KEY);
-	endif;
+	$instagram = new Instagram(INSTAGRAM_APP_KEY);
 	$user_id = getInstaUserId($username, $instagram);
 	$media_obj = $instagram->getUserMedia($user_id, 33); // Instagram limit of 33
 	$loop_count = 0;

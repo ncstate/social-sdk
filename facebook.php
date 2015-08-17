@@ -67,15 +67,9 @@ function requestFacebook($request) {
  * @return new FacebookSession object
  */
 function getFbSession() {
-	if(get_option('facebook_app_id')):
-		$app_id = get_option('facebook_app_id');
-		$secret = get_option('facebook_secret');
-		$authToken = get_option('facebook_app_id') . "|" . get_option('facebook_secret');
-	else:
-		$app_id = FACEBOOK_APP_ID;
-		$secret = FACEBOOK_SECRET;
-		$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;
-	endif;
+	$app_id = FACEBOOK_APP_ID;
+	$secret = FACEBOOK_SECRET;
+	$authToken = FACEBOOK_APP_ID . "|" . FACEBOOK_SECRET;
 	
 	FacebookSession::setDefaultApplication($app_id, $secret);
 
