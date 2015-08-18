@@ -4,7 +4,7 @@ define( 'NCSTATE_SOCIAL_PATH', dirname(__FILE__) . '/' );
 
 require( NCSTATE_SOCIAL_PATH . 'vendor/autoload.php' );
 
-if ( defined('ABSPATH') ) {
+if ( defined('ABSPATH') && function_exists('ot_get_option') ) {
   require_once( NCSTATE_SOCIAL_PATH . 'wp-config.php' );
 } elseif ( file_exists( NCSTATE_SOCIAL_PATH . 'config.php' ) ) {
   require_once( NCSTATE_SOCIAL_PATH . 'config.php' );
