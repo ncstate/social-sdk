@@ -18,6 +18,7 @@ function getTwitter($twitter_handle, $num = 10) {
 	$tweets = array();  
 
 	foreach($statuses as $status) {
+
 		$tweet = array(
 			'time' => strtotime($status->created_at),
 			'description' => restoreUrlsWithinText($status),

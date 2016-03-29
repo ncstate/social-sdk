@@ -12,7 +12,7 @@ $load_apis = array(
 	'facebook' => true,
 	'twitter' => true,
 	'instagram' => true,
-	'flickr' => true,
+	'flickr' => true
 );
 
 
