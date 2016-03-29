@@ -6,7 +6,7 @@
  * 
  * @param string $flickr_id A flickr album ID
  * @param int $num How many posts to return. Defaults to 8.
- * @return array Returns an array of images with image square image URL, link to full image, and title of photo.
+ * @return array Returns an array of images with square image URL, link to full image, and title of photo.
  */
 function getFlickr($flickr_id, $num = 8) {
   
@@ -33,7 +33,13 @@ function getFlickrConnection() {
   if (FLICKR_KEY) {
     $flickr = new phpFlickr(FLICKR_KEY);
     if(FALSE !== $flickr->test_echo()) {
-      $flickr->enableCache("fs", dirname( __FILE__ ) . '/cache');
+      
+      $cache = dirname( __FILE__ ) . '/cache';
+
+      if (file_exists ( $cache )) {
+        $flickr->enableCache("fs", $cache);
+      }
+      
       return $flickr;
     } else {
       throw new \RuntimeException('Flickr API Key has been defined but is invalid.');
