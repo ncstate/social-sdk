@@ -11,7 +11,8 @@
 $load_apis = array(
                 'facebook' => true,
                 'twitter' => true,
-                'instagram' => true
+                'instagram' => true,
+                'flickr' => true
               );
 
 
@@ -37,5 +38,13 @@ if($load_apis['instagram']) {
 
 // Instagram Config
 define('INSTAGRAM_APP_KEY', 'your_instagram_app_key');
+
+}
+
+
+if($load_apis['flickr']) {
+
+	// Flickr Config
+	define('FLICKR_KEY', 'your_flickr_api_key');
 
 }

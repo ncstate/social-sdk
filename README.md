@@ -41,10 +41,17 @@ Now that you have all the dependencies installed, you can set your configuration
 ###Instagram
 * Instagram App Key
 
-Lastly, just include the following in whatever files need to access to social networks.
-```php
+###Flickr
+* Flickr API Key
+
+
+Include the following in whatever files need to access to social networks. However, if you are using this in conjuction with college-parent it will automatically loaded.
+
+```php 
 require 'PATH_TO_FILE/ncstate-social-sdk.php';
 ```
+
+Lastly, set the "cache" folder to 777 via FTP.
 
 ##Functions
 
@@ -100,4 +107,17 @@ Array (
 ```
 
 
-
+####Get Flickr
+```php
+getFlickr(string $flickr_id, int $num = 8);
+```
+Returns an array of Flickr photos in the following format.
+```php
+Array (
+    [0] => Array (
+        ["img"] => "https://farm2.static.flickr.com/1529/24524621274_459764337e_q.jpg",
+        ["url"] => "https://farm2.static.flickr.com/1529/24524621274_459764337e_b.jpg",
+        ["title"] => "Susan Woodson welcomes the Ramseys to The Point for a brunch in their honor."
+    )
+)
+```

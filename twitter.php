@@ -18,15 +18,25 @@ function getTwitter($twitter_handle, $num = 10) {
 	$tweets = array();  
 
 	foreach($statuses as $status) {
+
 		$tweet = array(
 			'time' => strtotime($status->created_at),
 			'description' => restoreUrlsWithinText($status),
-			'url' => 'https://twitter.com/' . $status->user->screen_name . '/status/' . $status->id_str,
-			'media' => $status->entities->media
+			'url' => 'https://twitter.com/' . $status->user->screen_name . '/status/' . $status->id_str
 		);
-	    $tweets[] = $tweet;
+
+    if (isset($status->entities->media)) {
+      $tweet['media'] = $status->entities->media;
+    } else {
+      $tweet['media'] = '';
+    }
+
+    $tweets[] = $tweet;
+
    }
+
    return $tweets;
+   
 }
 
 function getTwitterConnection() {
@@ -53,9 +63,10 @@ function restoreUrlsWithinText($apiResponseTweetObject) {
     }
 
     // Replace the first media link since it's handled elsewhere
-    if($apiResponseTweetObject->entities->media) {
-    	$tweet = str_replace($apiResponseTweetObject->entities->media[0]->url, '', $tweet);        
+    if (isset($apiResponseTweetObject->entities->media)) {
+      $tweet = str_replace($apiResponseTweetObject->entities->media[0]->url, '', $tweet);  
     }
+
 
     return $tweet;
 

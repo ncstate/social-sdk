@@ -21,11 +21,18 @@
         "source": "https://github.ncsu.edu/ncstate-ucomm/ncstate-social-sdk",
         "issues": "https://github.ncsu.edu/ncstate-ucomm/ncstate-social-sdk/issues"
     },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.ncsu.edu:ncstate-ucomm/phpFlickr.git"
+    }
+  ],
     "require": {
         "php": ">=5.4.0",
         "ext-curl": "*",
         "facebook/php-sdk-v4" : "4.0.*",
         "cosenary/instagram" : "2.*",
-        "abraham/twitteroauth" : "0.4.*"
+        "abraham/twitteroauth" : "0.4.*",
+        "ncstate-ucomm/phpFlickr" : "dev-master"
     }
 }

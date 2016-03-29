@@ -47,3 +47,17 @@ foreach($instagram as $one_gram) {
       echo '<a href="' . $one_gram['url'] . '"><img width="200" src="' . $one_gram['img'] . '" alt="' . $one_gram['img'] . '"></a>';
   }
 }
+
+// Flickr Example
+echo "<br/><br/><h2>Flickr</h2>";
+try {
+$flickr = getFlickr('72157664311499396');
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
+
+foreach($flickr as $flick) {
+  if($flick['url'] != null){
+      echo '<a href="' . $flick['url'] . '"><img width="200" src="' . $flick['img'] . '" alt="' . $flick['title'] . '"></a>';
+  }
+}
