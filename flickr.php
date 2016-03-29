@@ -6,7 +6,7 @@
  * 
  * @param string $flickr_id A flickr album ID
  * @param int $num How many posts to return. Defaults to 8.
- * @return array Returns an array of posts with keys time, description, url, and media.
+ * @return array Returns an array of images with image square image URL, link to full image, and title of photo.
  */
 function getFlickr($flickr_id, $num = 8) {
   
