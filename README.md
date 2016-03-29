@@ -44,6 +44,13 @@ Now that you have all the dependencies installed, you can set your configuration
 ###Flickr
 * Flickr API Key
 
+
+Include the following in whatever files need to access to social networks. However, if you are using this in conjuction with college-parent it will automatically loaded.
+
+```php 
+require 'PATH_TO_FILE/ncstate-social-sdk.php';
+```
+
 Lastly, set the "cache" folder to 777 via FTP.
 
 ##Functions
