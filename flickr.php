@@ -69,7 +69,7 @@ function getFlickr($flickr_id, $num = 8, $sort = false)
 
     $f = getFlickrConnection();
 
-    $flickr_photos = $f->photosets_getPhotos($flickr_id, $extras = 'date_upload,last_update,views', $privacy_filter = null, $num, $page = 1, $media = null);
+    $flickr_photos = $f->photosets_getPhotos($flickr_id, $extras = 'date_upload,last_update,views,date_taken', $privacy_filter = null, $num, $page = 1, $media = null);
 
     $the_photos = $flickr_photos['photoset']['photo'];
 
