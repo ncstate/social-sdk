@@ -8,13 +8,7 @@
  * @return array Returns an array of images with square image URL, link to full image, and title of photo.
  */
 
-function getFlickr($flickr_id, $num = 8)
-{
-    $photos = getFlickrAlbum($flickr_id, $num);
-    return $photos;
-}
-
-function getFlickrAlbum($flickr_id, $num = 8, $sort = false)
+function getFlickr($flickr_id, $num = 8, $sort = false)
 {
 
     $f = getFlickrConnection();
