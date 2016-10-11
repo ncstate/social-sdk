@@ -1,6 +1,8 @@
 <?php
 
-/*** 
+/***
+    This configuration file is primarily intended for users not using WordPress.
+
     Ideally your server configuration will have the correct default timezone
     setting. If not, uncomment the following line and set it appropriately.
     http://php.net/manual/en/timezones.php
