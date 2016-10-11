@@ -13,12 +13,11 @@ use MetzWeb\Instagram\Instagram;
  */
 function getInstagram($username, $num = 10, $tag = false)
 {
-	
-	if(get_option('instagram_app_key')):
-		$instagram = new Instagram(get_option('instagram_app_key'));
-	else:
+	if (INSTAGRAM_APP_KEY) {
 		$instagram = new Instagram(INSTAGRAM_APP_KEY);
-	endif;
+	} else {
+		throw new \RuntimeException('Instagram API Credentials have not been defined.');
+	}
 	$user_id = getInstaUserId($username, $instagram);
 	$media_obj = $instagram->getUserMedia($user_id, 33); // Instagram limit of 33
 	$loop_count = 0;

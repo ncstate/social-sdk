@@ -18,30 +18,33 @@ function getTwitter($twitter_handle, $num = 10) {
 	$tweets = array();  
 
 	foreach($statuses as $status) {
+
 		$tweet = array(
 			'time' => strtotime($status->created_at),
 			'description' => restoreUrlsWithinText($status),
-			'url' => 'https://twitter.com/' . $status->user->screen_name . '/status/' . $status->id_str,
-			'media' => $status->entities->media
+			'url' => 'https://twitter.com/' . $status->user->screen_name . '/status/' . $status->id_str
 		);
-	    $tweets[] = $tweet;
+
+    if (isset($status->entities->media)) {
+      $tweet['media'] = $status->entities->media;
+    } else {
+      $tweet['media'] = '';
+    }
+
+    $tweets[] = $tweet;
+
    }
+
    return $tweets;
+   
 }
 
 function getTwitterConnection() {
-	if(get_option('twitter_consumer_key')):
-		$consumer_key = get_option('twitter_consumer_key');
-		$consumer_secret = get_option('twitter_consumer_secret');
-		$oauth_token = get_option('oauth_token');
-		$oauth_token_secret = get_option('oauth_token_secret');
-	else:
-		$consumer_key = CONSUMER_KEY;
-		$consumer_secret = CONSUMER_SECRET;
-		$oauth_token = OAUTH_TOKEN;
-		$oauth_token_secret = OAUTH_TOKEN_SECRET;
-	endif;	
-	return new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
+  if (CONSUMER_KEY && CONSUMER_SECRET && OAUTH_TOKEN && OAUTH_TOKEN_SECRET) {
+    return new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+  } else {
+    throw new \RuntimeException('Twitter API Credentials have not been defined.');
+  }
 }
 
 /**
@@ -60,9 +63,10 @@ function restoreUrlsWithinText($apiResponseTweetObject) {
     }
 
     // Replace the first media link since it's handled elsewhere
-    if($apiResponseTweetObject->entities->media) {
-    	$tweet = str_replace($apiResponseTweetObject->entities->media[0]->url, '', $tweet);        
+    if (isset($apiResponseTweetObject->entities->media)) {
+      $tweet = str_replace($apiResponseTweetObject->entities->media[0]->url, '', $tweet);  
     }
+
 
     return $tweet;
 
